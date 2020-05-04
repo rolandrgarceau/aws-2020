@@ -1,0 +1,6 @@
+https://aws.amazon.com/datapipeline/
+
+access your data where it’s stored, transform and process it at scale, and efficiently transfer the results to AWS services such as Amazon S3, Amazon RDS, Amazon DynamoDB, and Amazon EMR
+
+data processing workloads help elimnate having to deal with resource availability, managing inter-task dependencies, retrying transient failures or timeouts in individual tasks, or creating a failure notification system.
+

@@ -1,0 +1,69 @@
+June 2019
+New Acronym Not DRMCGIFPX for the Scottish Warrior Duck meets Fight Club!
+
+F FPGA
+I IOPS
+G Graphics
+H High Disk Throughput
+T Gen purp T2 micro
+D density
+R ram
+M main gen purp prod apps
+C Compute
+P Graphics pics
+X xtreme memory
+
+Can still boot with HDD magnetic. thought that might have since disappeared.
+
+EBS will not attach two instance drives. EFS still is used to share instance volumes. 
+Option here is to create a S3 bucket and attach permissions for both instances to
+access the data, but beware of the 11 9's rule. Eventually consistent reads might
+corrupt state.
+
+Termination protection is still off by default.
+EBS default Termination will kill your volume. Unload it properly. 
+Can we do lbu now? Add it in or snapshots is their alternative. 
+EBS backed root volumes can be encrypted with bit locker.
+
+Volumes are on EBS 
+Snapshots are on S3
+Snapshot volumes onto S3
+this still their point in time like time machine on the mac
+Snaps are also incremental on S3
+First ones take a little time
+
+Remember sharing snapshots require them to be unencrypted.
+The proceedure still is provision unencrypted root volume, stop. snap. deploy that
+snapshot and encrypt those volumes. Still good to stop the instance before taking
+the snap, even though docs say you may do it on the fly.
+
+Instance store goes away if underlying host fails (AWS side)- ephemeral.
+EBS stop doesnt lose data, termination does.
+
+You may use either for instances, but the root boot volume will go. so make sure
+you capture your packages for your custom setups, have an init plan, know what 
+bootstrapped script you need, etc. You can tell EBS to keep your root boot volume
+
+Remember Application Consistant Raid Array snapshot. Cache on the applications 
+and OS do not get included. So theinterdependencies between the raid array is the issue.
+steps:
+Stop app from writing to Disk.
+Flush the caches to disk.
+How?
+Freeze the file system.
+Unmount the RAID
+Shutting down the associated EC2 instance.
+
+AMIs still regional. Still need to copy over the AMI to the needed region.
+
+Monitoring is still 5 min default, can go to 1 min for detailed monitoring.
+Cloudwatch for performance monitoring. See notes on SysOps Admin for custom Cron
+driven metrics and monitoring. CloudTrail for auditing
+
+Coudwatch Dashboards- still get 2?
+Alarms for thresholds billing etc
+Events to trigger changes in resources. 
+Logs. Go back over the setup with S3. one bucket to aggregate vs console/cli to dictate
+where to.
+
+Still use roles over access keys on instances. Watch profile setup and .aws config

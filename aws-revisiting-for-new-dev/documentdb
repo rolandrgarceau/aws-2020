@@ -1,0 +1,12 @@
+https://aws.amazon.com/documentdb/
+
+Implements the Apache 2.0 open source MongoDB 3.6 API by emulating the responses that a MongoDB client expects from a MongoDB server, allowing you to use your existing MongoDB drivers and tools with Amazon DocumentDB.
+
+decoupled storage and compute with mongodb support
+    each scales independently
+scalable to 15 low lat read replicas
+99.99% availability
+
+Replicates six copies of your data across three AWS Availability Zones (AZs). You can use AWS Database Migration Service (DMS) for free (for six months) to easily migrate their on-premises or Amazon Elastic Compute Cloud (EC2) MongoDB databases to Amazon DocumentDB with virtually no downtime
+
+there is a document data model for profile management

@@ -1,0 +1,8 @@
+so now we can query any dataset in the lake straight from redshift without having to 
+syncronize the dataset to their cluster.
+
+Accelrated adhoc analysis 
+de-coupled capacity planning for analytics from the need to store local copies 
+of the largest datasets.
+
+federation of analytics

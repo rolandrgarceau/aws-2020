@@ -1,0 +1,60 @@
+https://aws.amazon.com/solutions/case-studies/amazon-migration-analytics/
+
+the problem with oracle on aws: (they called it the federated data lake architecture)
+
+50 petabytes of data analytics migrated to AWS.
+transformations of tables with more than 100 million rows consistently failed. This limited business teams’ ability to generate insights or deploy large-scale machine-learning solutions. Many abandoned the monolithic Oracle data warehouse in favor of custom solutions using Amazon Web Services (AWS) technologies.
+
+and this was as I suspected, due to:
+Inefficient hardware provisioning required labor-intensive demand forecasting and capacity planning
+
+which also led to inefficient financial coupling. Static sized for peak loads
+
+dynamically scale for hardware cost optimization takse into consideration licensing issues.
+what do you mean we can't sclae the same registration number on 400 t2 micro's? no bueno.
+
+Solution
+AWS consumer business decided to migrate their warehouse onto S3 with it in raw data 
+and native format. Immediate gain: data processing, streaming, and analytics.
+Amazon had to integrate its internal services for authentication, authorization, and data governance.
+
+This led to metadata service to simplify dataset discovery, which allows data consumers to easily search, sort, and identify datasets for analysis. Using EMR and Redshift AWS then allowed for self service down to the end user. EMR held the hadoop framework to ru Apache Spark, HBase, Presto, and Flink on EC2 and interact with S3.
+
+Amazon quicksight can be used to run queries and display info. Its the First Business 
+Intelligence Service with Pay-per-Session Pricing and ML Insights for everyone.
+
+Amazon Redshift Spectrum
+so now we can query any dataset in the lake straight from redshift without having to 
+syncronize the dataset to their cluster.
+
+Accelrated adhoc analysis 
+de-coupled capacity planning for analytics from the need to store local copies 
+of the largest datasets.
+
+federation of analytics- hmm is that iam federated thru cognito?
+
+Then came AWS Schema Conversion Tool
+
+This tooling was used to automatically convert and validate more than 80 percent of the 200,000 queries from Oracle SQL to Amazon Redshift SQL, saving more than 1,000 person-months of manual effort. For queries that could not be automatically converted, engineers documented and shared best practices with end users to enable conversion of these queries.
+
+Oracle's migration teams submitted a project plan and allocated resources to migrate artifacts including ETL processes, business reports, stored procedures, and machine-learning algorithms- 
+handled in waves. I like to surf waves.
+
+Using Cloudformation templates to provision resources. The teams seeded both the 
+data lake and the oracle data warehouse, then created a means to update both sets
+
+Channels were created to enable data producers and consumers to monitor data availability, accuracy, and latency in the data lake, so they could raise issues directly. The central team established weekly,monthly, and quarterly reviews with each team to track and report progress, and it aggregated progress reports from both user groups for program status reporting.
+
+Using the people that dealt with legacy db mgmt AWS redefined ways to keep them employed by
+using their skillset to help EMR and Redshift.
+
+Now the analytic infrastructure supports 200 petabytes of oracle data (4x original)
+Where did the optimizations pay off? 30% of the workload was no loanger used, by
+monitoring usage and removing wasteful resources.
+
+Tie it all together with a deliverable. being a good solution architect here means to be 
+able to hit these key topics from both sides- to develop a consumable which may be 
+a openql refined approach to a minimized payload delivery, and then turn around and
+be able to support it from the other side of ETL, the means to create the dashboard
+for developers to use for doing things like better UX direction or more complex
+pipeline delivery mechsisms.

@@ -1,0 +1,49 @@
+When attempting to reintroduce yourself to a platform you may have trained and then
+worked with, walked away for a few months and returned its always good to have a
+plan to "weed out the diffs"- find whats changed since your last encounter, make
+sure you brush up on what you were familiar with, and then see if the new additions
+to the platform may help solve some older problems incountered along the way. This
+dir was instigated in June 2019 for creating an audit account, and to get back
+on track with the edge route UI device for the ROV project to begin actually
+developing a shell to make API calls out to the cloud with.
+
+Start with the account. Its settings, users, permissions, MFA, and how policies 
+are drawn to obtain granular control.
+
+Case in point- AWS policy generator has changed significantly in the console, and
+only 6 months have passed for me. Most templating comes with a checklist to create
+permissions on your behalf (SAM certified acknowledgements).
+
+Then explore the services in question for the solution your are attempting to 
+develop. Most applications have networking, database, and some sort of client/server
+architecture that requires a front end developed and a back end to authenticate.
+
+I went for EC2 simply because it was part of the new Solutions Architect track at
+acloud.guru. S3 was prior to that but I haven't spun an instance in a while and
+will probably be asked to do so in an interview. Everything up to now I have been
+designing for is serverless, and any instance creating is simply an included json
+set of parameters when firing one up in dev, test, or prod pipelines.
+
+Lay out the potential services and assign or delegate priority and utility. Who 
+does what and when.
+
+Then have a plan to document it outside of standard logging proceedures.
+
+If in the delegation new services exist or new features in a service require 
+risk mitigation, handle it appropriately. Hire a pro, find training, assign a 
+teamate the management of it and/or train them to train us.
+
+Thats a good way to handle people in general from a transparent management perspective.
+Train them to train us.
+
+https://docs.aws.amazon.com/general/latest/gr/aws-security-audit-guide.html
+there is a good automated security auditing function there.
+
+Then for larger organizations we can allow users to set up their own perms:
+https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_users-self-manage-mfa-and-creds.html
+You effectively need a ceiling to throttle the amount of escalation a user would be
+able to achieve- use a group to assign them to. Then granularly delegate individuals
+to their needed sets. So for a developer they need to be able to setup Lambda access
+for a serverless project, for instance, and all the assosciated permissions for every
+other resource. Delegate that away to the sysadmin is the first step, but you also 
+need to make sure the dev does so in an effective responsible manner.
