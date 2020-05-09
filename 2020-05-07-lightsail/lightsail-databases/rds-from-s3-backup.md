@@ -8,7 +8,7 @@ Basic idea is that we have a backup in a format readable by RDS. We then use the
 
 ## Requirements
 
-* DB Instance as an endpoint. See instance classes [here](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html). We can probably start with db.m1
+* DB Instance as an endpoint. See instance classes [here](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html). We can probably start with db.m1, and they may ask vcpu and core count and hyperthread/ threads per core questions for xeon.
 
 #### Note: AWS Nitro System (db.m5, db.r5, db.t3) are throttled on combined read plus write workload. 
 
@@ -16,7 +16,20 @@ We can talk IOPS and custom throughput later.
 
 * Control network access to a DB instance through a security group.
 
-1. User
+## VPC, subnet, and security group
+
+Define this first:
+* in a default VPC, 
+* in a user-defined VPC, or 
+* outside of a VPC
+
+Default VPC is per Region still.
+
+* Use either [Amazon EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Welcome.html) or Security Group option on the VPC console to create the VPC.
+
+I need a user with admin privelages (best assigned to an admin group) and profile on your AWS account to do work here. Did we get that taken care of?
+
+## User
 
 Admin privelages. Watch cli perms and/or console use.
 
